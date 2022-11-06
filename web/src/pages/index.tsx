@@ -6,7 +6,7 @@ import iconCheck from "../assets/icon-check.svg";
 
 export default function Home() {
   return (
-    <div className="max-w-[1124px] h-screen mx-auto grid-cols-2 gap-28 items-center">
+    <div className="max-w-[1124px] h-screen mx-auto grid grid-cols-2 gap-28 items-center">
       <main>
         <Image src={logo} alt="NLW Copa" />
 
@@ -41,19 +41,22 @@ export default function Home() {
           para convidar outras pessoas 🚀
         </p>
 
-        <div className="mt-10 pt-10 border-t border-gray-600 flex items-center justify-between">
-          <div>
+        <div className="mt-10 pt-10 border-t border-gray-600 flex items-center justify-between text-gray-100">
+          <div className="flex items-center gap-6">
             <Image src={iconCheck} alt="" />
-            <div>
-              <span>+2.034</span>
-              <span>Balões criados</span>
+            <div className="flex flex-col">
+              <span className="font-bold text-2xl">+2.034</span>
+              <span>Bolões criados</span>
             </div>
           </div>
-          <div>
+
+          <div className="w-px h-14 bg-gray-600"></div>
+
+          <div className="flex items-center gap-6">
             <div>
               <Image src={iconCheck} alt="" />
-              <div>
-                <span>+192.846</span>
+              <div className="flex flex-col">
+                <span className="font-bold text-2xl">+192.846</span>
                 <span>Palpites enviados</span>
               </div>
             </div>
@@ -64,6 +67,7 @@ export default function Home() {
       <Image
         src={appPreviewImage}
         alt="Dois celulares exibindo uma prévia da aplicação móvel do NLW Copa"
+        quality={100}
       />
     </div>
   );
