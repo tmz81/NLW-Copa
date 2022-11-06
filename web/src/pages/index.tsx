@@ -17,7 +17,7 @@ export default function Home() {
         <div className="mt-10 flex items-center gap-2 ">
           <Image src={userAvatarExample} alt="" />
           <strong>
-            <span>+12.596</span> pessoas já estão participando
+            <span className="text-green-500">+12.596</span> pessoas já estão participando
           </strong>
         </div>
 
