@@ -3,6 +3,9 @@ import logo from "../assets/logo.svg";
 import userAvatarExample from "../assets/avatares.png";
 import appPreviewImage from "../assets/iphones.png";
 import iconCheck from "../assets/icon-check.svg";
+import { api } from "../services";
+import { promises } from "stream";
+import { ALL } from "dns";
 
 interface HomeProps {
   poolCount: number;
@@ -61,7 +64,9 @@ export default function Home(props: HomeProps) {
             <div className="flex items-center gap-6">
               <Image src={iconCheck} alt="" />
               <div className="flex flex-col">
-                <span className="font-bold text-2xl">+{props.guessesCount}</span>
+                <span className="font-bold text-2xl">
+                  +{props.guessesCount}
+                </span>
                 <span>Palpites enviados</span>
               </div>
             </div>
@@ -79,12 +84,15 @@ export default function Home(props: HomeProps) {
 }
 
 export const getServerSideProps = async () => {
-  const response = await fetch("http://localhost:3333/pools/count");
-  const data = await response.json();
+  const [poolCountResponse, guessCountResponse] = await Promise.all([
+    api.get("pools/count"),
+    api.get("guesses/count"),
+  ]);
 
   return {
     props: {
-      poolCount: data.count,
+      poolCount: poolCountResponse.data.count,
+      guessCount: guessCountResponse.data.count,
     },
   };
 };
